@@ -7,6 +7,6 @@ Gem::Specification.new do |s|
   s.description = 'Custom signature tracking and Active Record glue'
   s.homepage = 'https://redmine.consoloservices.com'
   s.require_path = '.'
-  s.files = [ 'signature_tracking.rb', 'signature.rb', 'active_record_glue.rb' ]
-  s.add_development_dependency 'activerecord', '~> 2.3'
+  s.files = [ 'signature_tracking.rb', 'lib/active_record_glue.rb' ]
+  s.add_dependency 'activerecord', '~> 2.3'
 end
