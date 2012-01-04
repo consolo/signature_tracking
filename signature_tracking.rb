@@ -7,6 +7,10 @@ gem 'activerecord', '~> 2.3'
 # signature tracking adds a model that represents an electronic signature for a
 # user.
 # 
+# &copy; 2009 Andrew Coleman
+# Released under MIT license.
+# http://www.opensource.org/licenses/mit-license.php
+# 
 # signature tracked models
 # ========================
 # 
