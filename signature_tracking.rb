@@ -1,4 +1,4 @@
-gem 'activerecord', '>= 2.3'
+gem 'activerecord'
 
 ##
 # signature tracking
