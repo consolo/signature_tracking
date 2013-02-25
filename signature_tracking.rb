@@ -68,14 +68,16 @@ module Consolo
             self.all :joins => "LEFT JOIN signatures ON signatures.owner_id = #{self.table_name}.id AND signatures.owner_type = '#{self.name}' AND signatures.physician_id IS NOT NULL", :conditions => 'signatures.physician_id IS NULL'
           end
           
-          def track_signature!(user, physician = nil, effective_date = nil)
+          def track_signature!(user, physician = nil, effective_date = nil, recorded_by = nil)
             effective_date ||= Time.zone.try(:today)
             effective_date ||= Date.today
             physician ||= user.physician if user.physician
+            recorded_by ||= user
             self.signatures.create(
               :user => user,
               :physician => physician,
-              :effective_date => (physician.nil? ? nil : effective_date)
+              :effective_date => (physician.nil? ? nil : effective_date),
+              :recorded_by => recorded_by
             )
           end
           
