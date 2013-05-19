@@ -97,7 +97,9 @@ module Consolo
             role_name = Role.extended_base_roles[discipline]
             physician_match = discipline == :physician
             self.signatures.detect do |signature|
-              signature.user.role.try(:root_role).try(:name) == role_name and (physician_match or signature.physician_id.nil?)
+              signature.user.roles.detect do |role|
+                role.name == role_name and (physician_match or signature.physician_id.nil?)
+              end
             end
           end
         RUBY
