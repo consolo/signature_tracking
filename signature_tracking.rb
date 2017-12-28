@@ -54,9 +54,13 @@ module Consolo
       # Tracks signatures for a model. Adds a nice untracked_items method to
       # the class for easy tracking later.
       #
-      def track_signatures
+      # @param scope [Proc] optional scope to pass to the association. Defaults to
+      # ordering signatures by created_at DESC.
+      #
+      def track_signatures(scope = nil)
         self.class_eval do
-          has_many :signatures, :as => :owner, :dependent => :destroy
+          scope ||= -> { order 'signatures.created_at DESC' }
+          has_many :signatures, scope, :as => :owner, :dependent => :destroy
         end
         
         self.class_eval <<-RUBY
